@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <link href="styles/style.css" rel="stylesheet" />
+    
+    <title>Workout Tracker</title>
+
+  </head>
+  <body>
+     <h1 style="text-align:center";>WorkOut Tracker</h1>
+     
+     <div class="container">
+      <div class="calander">
+        <header>
+          <pre class="left">◀</pre>
+
+            <div class="header-display">
+              <p class="display">""</p>
+            </div>
+
+            <pre class="right">▶</pre>
+        </header> 
+
+        <div class="week">
+          <div>Su</div>
+          <div>Mo</div>
+          <div>Tu</div>
+          <div>We</div>
+          <div>Th</div>
+          <div>Fr</div>
+          <div>Sa</div>
+        </div>
+        <div class="days">
+
+        </div>
+     </div>
+     <div class="display-selected">
+      <p class="selected"></p>
+      
+      <p id="WorkoutEntered"></p>
+  <input type="text" id="Workout" placeholder="Enter the workout"/>
+<!-- <p>Enter the Workout</p> -->
+<button id="addWork" onclick="addWorkout()">+</button>
+     
+</div>
+    </div>
+
+    
+     
+     <script src="scripts/main.js"></script>
+  </body>
+</html>
