@@ -96,10 +96,12 @@ header{
     color: var(--white);
   }
   .display-selected{
+    
     margin-bottom: 10px;
     padding: 20px 20px;
     text-align: center;
   }
+
   
 /* body {
     background-image: url("https://img.freepik.com/free-photo/side-view-man-jumping-outdoors_23-2149557835.jpg");

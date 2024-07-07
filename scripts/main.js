@@ -1,3 +1,7 @@
+// import { nanoid } from 'https://cdn.jsdelivr.net/npm/nanoid/nanoid.js'
+// let id = nanoid(10);
+// console.log(id);
+
 const myHeading = document.querySelector("h1");
 myHeading.textContent = "Workout Tracker";
 
@@ -6,7 +10,7 @@ let previous = document.querySelector(".left");
 let next = document.querySelector(".right");
 let days = document.querySelector(".days");
 let selected = document.querySelector(".selected");
-let workout ;
+let workout = {};
 let sets;
 let reps;
 
@@ -100,6 +104,71 @@ function displaySelected(){
         days.addEventListener("click", (e) =>{
         const selectedDate = e.target.dataset.date;
         selected.innerHTML = `Selected Date : ${selectedDate}`;
+if(!workout.hasOwnProperty(selectedDate)){
+        workout[selectedDate] = [] ;
+}
+    var input = document.createElement("input");
+    input.type = "text";
+    input.id = "workouts";
+    input.placeholder = "Enter the workout"
+    document.getElementById('textBoxContainer').innerHTML = ""
+    document.getElementById('textBoxContainer').appendChild(input);
+
+    var input1 = document.createElement("input");
+    input1.type = "number";
+    input1.id = "set";
+    input1.placeholder = "sets"
+    document.getElementById('setsContainer').innerHTML="";
+    document.getElementById('setsContainer').appendChild(input1);
+
+    var input2 = document.createElement("input");
+    input2.type = "number";
+    input2.id = "rep";
+    input2.placeholder = "reps"
+    document.getElementById('repsContainer').innerHTML=""
+    document.getElementById('repsContainer').appendChild(input2)
+
+    var plus = document.createElement("button");
+    plus.type = "button";
+    plus.id = "addWorkout"
+    plus.textContent = "+"
+    
+    // document.getElementById('worklist').innerHTML = JSON.stringify(workout.filter((work) => work.clickedDate === selectedDate));
+    document.getElementById('worklist').innerHTML = JSON.stringify(workout[selectedDate]);
+
+    plus.addEventListener("click", ()=>{
+
+        function Workout(workoutName,sets,reps,clickedDate){
+            this.workoutName = workoutName;
+            this.sets = sets;
+            this.reps = reps;
+            this.clickedDate = clickedDate
+
+        }
+        var workoutName =  document.getElementById("workouts").value;
+        var sets =  document.getElementById("set").value;
+        var reps =  document.getElementById("rep").value;
+        var clickedDate =  selectedDate;
+        
+        const work = new Workout(workoutName,sets,reps,clickedDate) ;
+
+        // workout.push(work);
+
+        workout[selectedDate].push(work);
+        console.log(work);
+
+        // document.getElementById('worklist').innerHTML = JSON.stringify(workout.filter((work) => work.clickedDate === selectedDate));
+
+        document.getElementById('worklist').innerHTML = JSON.stringify(workout[selectedDate]);
+        document.getElementById("workouts").value = "";
+        document.getElementById("set").value = "";
+       document.getElementById("rep").value = "";
+    
+    })
+document.getElementById('plus').innerHTML ="";
+    document.getElementById('plus').appendChild(plus);
+
+
     });
     });
 }
